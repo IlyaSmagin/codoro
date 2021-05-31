@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import useTimer from "./logic/useTimer";
 
 function App() {
+  const [
+    { timeRemaining, title, buttonTitle },
+    isRunning,
+    { startTimer, stopTimer, resetTimer },
+  ] = useTimer();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2 className="title">{title}</h2>
+      <div className="timer">
+        <span>{timeRemaining}</span>
+      </div>
+      <div className="btn-container">
+        {!isRunning && (
+          <button className="btn" onClick={startTimer}>
+            {buttonTitle}
+          </button>
+        )}
+        {isRunning && (
+          <button className="btn" color="secondary" onClick={stopTimer}>
+            Pause
+          </button>
+        )}
+        <button className="btn" color="default" onClick={resetTimer}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 }
