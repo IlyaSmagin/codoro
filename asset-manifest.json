@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/codoro/static/css/main.0fe5836c.chunk.css",
+    "main.js": "/codoro/static/js/main.2567dd41.chunk.js",
+    "main.js.map": "/codoro/static/js/main.2567dd41.chunk.js.map",
+    "runtime-main.js": "/codoro/static/js/runtime-main.5f2b7f8d.js",
+    "runtime-main.js.map": "/codoro/static/js/runtime-main.5f2b7f8d.js.map",
+    "static/js/2.2544b045.chunk.js": "/codoro/static/js/2.2544b045.chunk.js",
+    "static/js/2.2544b045.chunk.js.map": "/codoro/static/js/2.2544b045.chunk.js.map",
+    "static/js/3.4a74c4e3.chunk.js": "/codoro/static/js/3.4a74c4e3.chunk.js",
+    "static/js/3.4a74c4e3.chunk.js.map": "/codoro/static/js/3.4a74c4e3.chunk.js.map",
+    "index.html": "/codoro/index.html",
+    "static/css/main.0fe5836c.chunk.css.map": "/codoro/static/css/main.0fe5836c.chunk.css.map",
+    "static/js/2.2544b045.chunk.js.LICENSE.txt": "/codoro/static/js/2.2544b045.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5f2b7f8d.js",
+    "static/js/2.2544b045.chunk.js",
+    "static/css/main.0fe5836c.chunk.css",
+    "static/js/main.2567dd41.chunk.js"
+  ]
+}
