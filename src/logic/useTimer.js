@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
-import { getInit, getWait, getWork, getReset } from "./usePhrase";
+import { getPhrase } from "./usePhrase";
 import useDocTitle from "./useDocTitle";
-function useTimer(initTime) {
-  const [timeLeft, setTimeLeft] = useState(20 * 60);
-  const [title, setTitle] = useState(getInit());
+function useTimer(initTime = 20) {
+  const [timeLeft, setTimeLeft] = useState(initTime * 60);
+  const [title, setTitle] = useState(getPhrase("init"));
   const [isRunning, setIsRunning] = useState(false);
   const [buttonTitle, setbuttonTitle] = useState("Start");
   const setDocTitle = useDocTitle("Codoro");
@@ -12,7 +12,7 @@ function useTimer(initTime) {
 
   function startTimer() {
     if (intervalRef.current !== null) return;
-    setTitle(getWork());
+    setTitle(getPhrase("work"));
     setIsRunning(true);
     intervalRef.current = setInterval(() => {
       setTimeLeft((timeLeft) => {
@@ -27,16 +27,22 @@ function useTimer(initTime) {
     if (intervalRef.current === null) return;
     clearInterval(intervalRef.current);
     intervalRef.current = null;
-    setTitle(getWait());
+    setTitle(getPhrase("wait"));
     setbuttonTitle("Continue");
     setIsRunning(false);
     setDocTitle(timeRemaining + " (paused)");
   }
-  function resetTimer() {
+  function editTimer(newTime = initTime) {
     stopTimer();
-    setTitle(getReset());
+    setTitle(getPhrase("edit"));
+    setbuttonTitle("Save");
+    setTimeLeft(newTime * 60);
+    setDocTitle("Editing timer");
+  }
+  function resetTimer() {
+    setTitle(getPhrase("reset"));
     setbuttonTitle("Start");
-    setTimeLeft(20 * 60);
+    setTimeLeft(initTime * 60);
     setDocTitle("Start again");
   }
   function padTime(time) {
@@ -52,7 +58,7 @@ function useTimer(initTime) {
   return [
     { timeRemaining, title, buttonTitle },
     isRunning,
-    { startTimer, stopTimer, resetTimer },
+    { startTimer, stopTimer, resetTimer, editTimer },
   ];
 }
 export default useTimer;

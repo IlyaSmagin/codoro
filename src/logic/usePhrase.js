@@ -11,7 +11,7 @@ const phrases = {
     "Start a habbit",
     "3, 2, 1... Code!",
   ],
-  waiting: [
+  wait: [
     "Keep it up!",
     "Let your eyes rest",
     "Wait a minute",
@@ -23,7 +23,7 @@ const phrases = {
     "Ready to continue?",
     "Are you done already?",
   ],
-  working: [
+  work: [
     "You are doing great!",
     "Stay focused",
     "Do not forget why you here",
@@ -47,16 +47,19 @@ const phrases = {
     "Never stop forever",
     "Find a new angle!",
   ],
+  edit: [
+    "Input custom time frame",
+    "Change a pace",
+    "Find your rhythm",
+    "Adapt tool to your needs",
+    "Choose your tempo",
+    "One step at a time",
+    "Timer starts with 0",
+    "Don't go negative",
+    "Time your work",
+    "Keep it short",
+  ],
 };
-export function getInit() {
-  return phrases.init[Math.floor(Math.random() * 10)];
-}
-export function getWait() {
-  return phrases.waiting[Math.floor(Math.random() * 10)];
-}
-export function getWork() {
-  return phrases.working[Math.floor(Math.random() * 10)];
-}
-export function getReset() {
-  return phrases.reset[Math.floor(Math.random() * 10)];
+export function getPhrase(type) {
+  return phrases[type][Math.floor(Math.random() * 10)];
 }
