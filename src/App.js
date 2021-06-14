@@ -18,8 +18,13 @@ function App() {
       : setTime(newTime);
   };
   function handleEdit() {
-    !isEdited ? resetTimer() : editTimer(time);
+    editTimer(time);
+    if (isEdited) resetTimer();
     setIsEdited(!isEdited);
+  }
+  function handleReset() {
+    if (isEdited) setIsEdited(!isEdited);
+    resetTimer();
   }
   return (
     <div className="App">
@@ -46,11 +51,15 @@ function App() {
           </button>
         )}
         {isRunning && (
-          <button className="btn" color="secondary" onClick={stopTimer}>
+          <button
+            className="btn"
+            color="secondary"
+            onClick={isEdited ? handleEdit : stopTimer}
+          >
             Pause
           </button>
         )}
-        <button className="btn" color="default" onClick={resetTimer}>
+        <button className="btn" color="default" onClick={handleReset}>
           Reset
         </button>
       </div>
