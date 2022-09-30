@@ -39,10 +39,10 @@ function useTimer(initTime = 20) {
     setTimeLeft(newTime * 60);
     setDocTitle("Editing timer");
   }
-  function resetTimer() {
+  function resetTimer(time = initTime) {
     setTitle(getPhrase("reset"));
     setbuttonTitle("Start");
-    setTimeLeft(initTime * 60);
+    setTimeLeft(time * 60);
     setDocTitle("Start again");
   }
   function padTime(time) {

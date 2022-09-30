@@ -9,22 +9,38 @@ function App() {
     { timeRemaining, title, buttonTitle },
     isRunning,
     { startTimer, stopTimer, resetTimer, editTimer },
-  ] = useTimer();
+  ] = useTimer(time);
   const handleChange = (event) => {
     event.persist();
-    const newTime = event.target.value;
-    newTime <= 0
-      ? console.log("Hey, be careful with negative time!")
-      : setTime(newTime);
+    const newTime = Number(event.target.value);
+    if (newTime < 0) {
+      console.log("Hey, be careful with negative time!");
+      setTime(1);
+    } else {
+      setTime(newTime);
+    }
   };
   function handleEdit() {
     editTimer(time);
-    if (isEdited) resetTimer();
-    setIsEdited(!isEdited);
+    if (isEdited) {
+      resetTimer(time);
+      if (time <= 0) {
+        setTime(1);
+        resetTimer(1);
+      }
+    }
+
+    setIsEdited(() => !isEdited);
   }
   function handleReset() {
-    if (isEdited) setIsEdited(!isEdited);
-    resetTimer();
+    resetTimer(time);
+    if (isEdited) {
+      setIsEdited(() => !isEdited);
+      if (time <= 0) {
+        setTime(1);
+        resetTimer(1);
+      }
+    }
   }
   return (
     <div className="App">
